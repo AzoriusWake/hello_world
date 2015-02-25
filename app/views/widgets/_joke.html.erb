@@ -1,0 +1,5 @@
+<div style="text-align:center;">
+  <% response = HTTParty.get("http://api.icndb.com/jokes/random?limitTo=[nerdy]") %>
+  <h4 style="text-align:center">Chuck Norris Joke: </h4>
+  <div style="margin: 12px; border: 1px solid white; padding: 10px"><%= response["value"]["joke"].gsub("&quot;", "") %></div>
+</div>

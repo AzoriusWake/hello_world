@@ -1,0 +1,29 @@
+<div id="stocky" ng-controller="stockAppCtrl" style="margin: 0px 8px;">
+  <div >
+    <table>
+      <br>
+      <thead>
+        <tr>
+          <th style="width: 60px; text-align: center">Sym</th>
+          <th style="width: 182px; text-align: center">Name</th>
+          <th style="width: 60px; text-align: center">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="stock in StockList">
+          <td style="font-size: 14px">{{stock.symbol}}</td>
+          <td style="font-size: 14px">{{stock.name}}</td>
+          <td style="font-size: 14px">{{stock.last_trade_price_only | currency}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <div style="text-align: center">Add or Remove Stock Symbol:
+  <form ng-submit="form" style="color: black;">
+    <p><input type="text" style="color: black" ng-model="text" name="symbol" /></p>
+    <input type="submit" ng-click="add()" value="Add Stock" />
+    <input type="submit" ng-click="remove()" value="Remove Stock" />
+  </form>
+  </div>
+</div>

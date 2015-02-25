@@ -1,0 +1,18 @@
+<div class="foods">
+  <p class="foodList">
+  <% @recipe = Recipe.get_recipe %>
+  <% @recipe %>
+  <% @recipe["recipes"].first(6).each do |recipe| %>
+    <%= link_to(image_tag(recipe["image_url"]), recipe["f2f_url"])%>
+  <% end %>
+</p>
+</div>
+<div class="food_search">
+  <%= form_for dashboard_path, :html => {:id => "recipe_search"}, remote: true do |f| %>
+    <p style="color: black">
+      <%= f.text_field :search %>
+      <%= f.submit "Search" %>
+    </p>
+  <% end %>
+  <%= link_to 'Powered By Food2Fork.com' ,'http://Food2Fork.com' %>
+</div>

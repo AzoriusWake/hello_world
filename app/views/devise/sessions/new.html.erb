@@ -1,0 +1,35 @@
+<center><div class="logo">
+  <i class="fa fa-cloud fa-5x"> Login</i>
+</div>
+
+<div class="login-form">
+<!--   <div class="login-title">Log in</div>
+ -->
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <span class="text-black"><%= f.email_field :email, autofocus: true %></span>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %><br />
+      <span class="text-black"><%= f.password_field :password, autocomplete: "off" %></span>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+
+    <div class="actions text-black">
+      <%= f.submit "Log in" %>
+    </div>
+  <% end %>
+<br />
+  <%= render "devise/shared/links" %>
+<%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
+</div>
+
+</center>

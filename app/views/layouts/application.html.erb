@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>HelloWorld</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body style="background-color: #215B66">
+
+    <% if user_signed_in? %>
+  <div id="wrapper">
+    <!-- ##### NEW HEADER ##### -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+
+        <li class="sidebar-brand">
+          <a href="/dashboard">
+            Hello World!
+          </a>
+        </li>
+        <li><%= link_to 'Edit profile', edit_user_registration_path %> </li>
+        <li class = "dropdown">
+          <a href="/dashboard" class = "dropdown-toggle" id="add-widget-menu" data-toggle = "dropdown">Add Widget <b class ="caret"></b></a>
+          <ul class = "dropdown-menu">
+             <li><%= link_to 'Clock', widgets_path(:widget => {:name => "clock"}), method: :post %></li>
+            <li><%= link_to 'Weather', widgets_path(:widget => {:name => "weather"}), method: :post %></li>
+            <li><%= link_to 'News', widgets_path(:widget => {:name => "newsitem"}), method: :post %></li>
+            <li><%= link_to 'Stocks', widgets_path(:widget => {:name => "stock"}), method: :post %></li>
+            <li><%= link_to 'Music', widgets_path(:widget => {:name => "music"}), method: :post %></li>
+            <li><%= link_to 'Alarm', widgets_path(:widget => {:name => "alarm"}), method: :post %></li>
+            <li><%= link_to 'Basketball', widgets_path(:widget => {:name => "basketball"}), method: :post %></li>
+            <li><%= link_to 'Football', widgets_path(:widget => {:name => "football"}), method: :post %></li>
+            <li><%= link_to 'Smiley', widgets_path(:widget => {:name => "smiley"}), method: :post %></li>
+            <li><%= link_to 'Cute Animals', widgets_path(:widget => {:name => "video"}), method: :post %></li>
+            <li><%= link_to 'Recipes', widgets_path(:widget => {:name => "recipe"}), method: :post %></li>
+            <li><%= link_to 'Word of the Day', widgets_path(:widget => {:name => "wotd"}), method: :post %></li>
+            <li><%= link_to 'Urban WotD', widgets_path(:widget => {:name => "urbanwotd"}), method: :post %></li>
+            <li><%= link_to 'Joke', widgets_path(:widget => {:name => "joke"}), method: :post %></li>
+            <li><%= link_to 'Bart', widgets_path(:widget => {:name => "bart"}), method: :post %></li>
+            <li><%= link_to 'Tswift', widgets_path(:widget => {:name => "tswift"}), method: :post %></li>
+          </ul>
+        </li>
+        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+
+      </ul>
+    </div>
+
+    <!-- ##### BODY ##### -->
+
+
+    <% end %>
+    <div class = "container">
+      <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+
+      <div class = "modal fade" id = "alarm-modal" role = "dialog">
+        <div class = "modal-dialog">
+          <div class = "modal-content">
+            <div class = "modal-body">
+              <center>
+                <h1>Alarm's Up!</h1>
+                <p>You'd better get a move on.</p>
+                <audio src="../assets/Zen-Temple-Bell.mp3" id="bell" autostart="false"></audio>
+              </center>
+            </div>
+            <div class = "modal-footer">
+              <a class = "btn btn-primary" data-dismiss="modal">Close</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div ng-app="myApp" id="page-content" style="margin-top: 5%">
+        <%= yield %>
+      </div>
+    </div>
+
+   <!-- ###### FOOTER ###### -->
+
+   <div class = "navbar navbar-default navbar-fixed-bottom">
+    <div class = "container">
+      <p class = "navbar-text pull-left">Site Built By Kiope Gyzen, Youngsun Paik, Henry Tam, and Wesley Gauntt</p>
+      <a class = "navbar-btn btn-warning btn pull-right">We're great! </a>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

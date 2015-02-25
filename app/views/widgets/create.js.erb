@@ -1,0 +1,18 @@
+var gridster;
+  $(function(){
+    var widgetString = "<li id='widget-box' data-id='<%=widget.id%>'>WHYYYYYYY</li>";
+
+
+    gridster = $(".gridster ul").gridster({          widget_margins: [10, 10],
+      widget_base_dimensions: [100, 100]}).data('gridster');
+        var widgets = [
+        [widgetString, 2, 2, 1, 1]
+        ];
+
+
+        $.each(widgets, function(i, widget){
+        gridster.add_widget.apply(gridster, widget)
+      });
+    });
+
+

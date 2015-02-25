@@ -1,0 +1,10 @@
+<div>
+  <h4 style="text-align:center;">Urban Word of the Day</h3>
+  <h5 style="text-align:center;"><%= Time.now.strftime("%B %d, %Y") %></h5>
+  <% urban_page = Nokogiri::HTML(RestClient.get("http://www.urbandictionary.com/")) %>
+  <div style="margin: 10px 16px; border: 1px solid white; padding: 6px">
+    <div style="margin: 12px; text-align:left;"><span style="font-weight: bold">Word:  </span><%= urban_page.css(".word")[0].text.capitalize %></div>
+    <div style="margin: 12px; text-align:left;"><span style="font-weight: bold">Definition:  </span><%= urban_page.css(".meaning")[0].text %></div>
+    <div style="margin: 12px; text-align:left;"><span style="font-weight: bold">Example:  </span><%= urban_page.css(".example")[0].text %></div>
+  </div>
+</div>
