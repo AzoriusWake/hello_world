@@ -44,7 +44,6 @@ class StocksController < ApplicationController
       @stock_symbols.each do |symbol|
         @stocks << Stocker.find(symbol)
       end
-      pp @stocks
     # @stock_symbols.each do |symbol|
     #   @stocks << StockQuote::Stock.quote(symbol, nil, nil,
     #     [ "Symbol",
@@ -56,9 +55,9 @@ class StocksController < ApplicationController
 end
 
 class Stocker
-  include HTTParty
 
   attr_accessor :symbol, :name, :last_trade_price_only
+
   def initialize(symbol, name, lastTradePriceOnly)
     self.symbol = symbol
     self.name = name
